@@ -9,7 +9,7 @@
 *    convenient_render: <Map> // 方便渲染的格式{"颜色" => [红, 黑], "大小" => [L, XL], "性别" => [男, 女]}
 * }
 *
-* @param {Function} filter(conditions: Array) => {
+* @param {Function} filter(conditions<Array>) => {
 *        selected_types<Array>, // 已选类型 ["颜色", "大小", "性别"]
 *        selected_detail<String>, // 已选的具体参数 每次点击的时候显示已选的参数 "颜色: 红 大小: XL "
 *        match_skus<Array>, // 符合条件的sku [{颜色: "红", 大小: "XL", 性别: "男"}]

@@ -18,6 +18,15 @@
     button.no{
         background-color: grey;
     }
+    p{
+        display: block;
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    span{
+        display: block
+    }
 </style>
 <body>
 
@@ -203,17 +212,22 @@
             if(res.target){
 
                 Object.entries(res.target).map(([k, v])=>{
-                    if(v && !(v instanceof String)){
-                        Object.entries(v).map(([key, val])=>{
-                            console.log('ok', key,val)
-                        })
+                    let sp = document.createElement('span');
+                    if(v instanceof Object){
+                        for(let i in v){
+                            sp.textContent += `${k}: ${i, v[i]} \n`;
+                            ele.appendChild(sp);
+                        }
+                    }else{
+                        sp.textContent += `${k}: ${v} \n`;
+                        ele.appendChild(sp);
                     }
-                    ele.textContent += `${k}: ${v} \n`;
-                })
+                });
 
             }else{
                 ele.textContent = ``;
             }
+            
         });
 
     </script>
