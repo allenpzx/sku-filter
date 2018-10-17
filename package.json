@@ -1,0 +1,23 @@
+{
+  "name": "sku-filter",
+  "version": "1.0.0",
+  "description": "simple sku filter",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allenpzx/sku-filter.git"
+  },
+  "keywords": [
+    "sku",
+    "filter"
+  ],
+  "author": "pengzixiu",
+  "license": "MIT ",
+  "bugs": {
+    "url": "https://github.com/allenpzx/sku-filter/issues"
+  },
+  "homepage": "https://github.com/allenpzx/sku-filter#readme"
+}
