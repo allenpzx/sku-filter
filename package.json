@@ -2,7 +2,7 @@
   "name": "sku-filter",
   "version": "1.0.0",
   "description": "simple sku filter",
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
     "test": "test",
     "build": "webpack --config webpack.config.js",
