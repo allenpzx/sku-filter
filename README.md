@@ -1,5 +1,5 @@
 ### sku-filter
-[![NPM](https://nodei.co/npm/filter-sku.png)](https://nodei.co/npm/filter-sku/)
+[![NPM](https://nodei.co/npm/sku-filter.png)](https://nodei.co/npm/sku-filter/)
 
 ##### 使用场景: 
 
