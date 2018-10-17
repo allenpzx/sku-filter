@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    button{
+        margin: 0 20px;
+        background-color: #fff;
+    }
+    button.chosen{
+        background-color: orange;
+    }
+    button.no{
+        background-color: grey;
+    }
+</style>
+<body>
+
+    <div id='container'>
+
+    </div>
+    <p id="show">
+
+    </p>
+
+    <script type='text/javascript' src="../dist/main.js"></script>
+    <script>
+        // 数据模型
+        const product = {
+            "code": 1,
+            "data": {
+                "id": 3,
+                "min_price": {
+                    "level1": "10",
+                    "level2": "5"
+                },
+                "name": "aa",
+                "description": "bb",
+                "image": "1ac9d492.png",
+                "created_at": "2018-08-10 13:31:25",
+                "updated_at": "2018-10-12 17:01:33",
+                "deleted_at": null,
+                "category_id": "1",
+                "sliders": ["d6a4a433.png", "c37daee5.jpg"],
+                "vip_level_slug": "level1",
+                "max_price": {
+                    "level1": "10",
+                    "level2": "5"
+                },
+                "type": ["颜色", "大小", "性别"],
+                "is_virtual": true,
+                "used_num": "110",
+                "details": "<p>cc<\/p>\r\n",
+                "limit_num": "0",
+                "partner_shop_id": "58",
+                "is_recommend": true,
+                "category_sort": "0",
+                "all_sort": "0",
+                "recommend_sort": "0",
+                "is_online": true,
+                "is_collected": false,
+                "all_stock": 129999951,
+                "skus": [{
+                    "id": 106,
+                    "name": null,
+                    "description": null,
+                    "price": {
+                        "level1": "10",
+                        "level2": "5"
+                    },
+                    "type": {
+                        "颜色": "红",
+                        "大小": "S",
+                        "性别": "男"
+                    },
+                    "image": "default_point_shop_product_sku.jpg",
+                    "stock": "99999995",
+                    "point_shop_product_id": "3"
+                }, {
+                    "id": 107,
+                    "name": null,
+                    "description": null,
+                    "price": {
+                        "level1": "10",
+                        "level2": "5"
+                    },
+                    "type": {
+                        "颜色": "红",
+                        "大小": "XL",
+                        "性别": "男"
+                    },
+                    "image": "default_point_shop_product_sku.jpg",
+                    "stock": "9999991",
+                    "point_shop_product_id": "3"
+                }, {
+                    "id": 108,
+                    "name": null,
+                    "description": null,
+                    "price": {
+                        "level1": "10",
+                        "level2": "5"
+                    },
+                    "type": {
+                        "颜色": "绿",
+                        "大小": "XL",
+                        "性别": "女"
+                    },
+                    "image": "default_point_shop_product_sku.jpg",
+                    "stock": "9999966",
+                    "point_shop_product_id": "3"
+                }, {
+                    "id": 109,
+                    "name": null,
+                    "description": null,
+                    "price": {
+                        "level1": "10",
+                        "level2": "5"
+                    },
+                    "type": {
+                        "颜色": "红",
+                        "大小": "SL",
+                        "性别": "女"
+                    },
+                    "image": "default_point_shop_product_sku.jpg",
+                    "stock": "9999999",
+                    "point_shop_product_id": "3"
+                }],
+                "partner_shop": {
+                    "id": 58,
+                    "name": "测试品牌1",
+                    "created_at": "2018-08-09 10:48:23",
+                    "updated_at": "2018-08-09 10:48:23",
+                    "support_phone": null,
+                    "support_web_link": null,
+                    "url_to_some_news": null,
+                    "checkbox_text_en": null,
+                    "checkbox_text_cn": null,
+                    "lunch_website_button_text": null,
+                    "support_details": null,
+                    "logo_image": "9b2b75f6.png",
+                    "description": "测试品牌1简介",
+                    "detail": "测试品牌1详情",
+                    "discount": []
+                }
+            }
+        };
+
+        const f = new SKUFilter({data: product.data.skus});
+        const init = f.initial();
+        const box = document.getElementById('container');
+
+        [...init.convenient_render].map(([k,v])=>{
+            let tit = document.createElement('h2');
+            tit.textContent = k;
+            box.appendChild(tit);
+            [...v].map(x=>{
+                let btn = document.createElement('button');
+                btn.dataset.type = k;
+                btn.textContent = x;
+                box.appendChild(btn);
+            })
+        })
+
+        box.addEventListener('click', (e)=>{
+            const btns = Array.from(box.getElementsByTagName('button'));
+            const tar = e.target;
+            const val = tar.textContent;
+            tar.classList.contains('chosen') 
+            ? tar.classList.remove('chosen') 
+            : (tar.classList.contains('no') ? null : tar.classList.add('chosen'));
+
+            let ok = [];
+            btns.map(btn=>{
+                let obj = {};
+                obj[btn.dataset.type] = btn.textContent
+                btn.classList.contains('chosen') && ok.push(obj);
+            })
+            let res = f.filter(ok);
+            console.log(res);
+            let render_list = res.render_list;
+            btns.map(btn=>{
+                const isok = render_list.some(x=>{
+                    if(x[btn.dataset.type] === btn.textContent){
+                        return true
+                    }else{
+                        return false
+                    }
+                })
+                if(isok){
+                    btn.classList.remove('no');
+                }else{
+                    btn.classList.remove('chosen');
+                    btn.classList.add('no')
+                }
+            });
+
+            let ele = document.getElementById('show');
+            if(res.target){
+
+                Object.entries(res.target).map(([k, v])=>{
+                    if(v && !(v instanceof String)){
+                        Object.entries(v).map(([key, val])=>{
+                            console.log('ok', key,val)
+                        })
+                    }
+                    ele.textContent += `${k}: ${v} \n`;
+                })
+
+            }else{
+                ele.textContent = ``;
+            }
+        });
+
+    </script>
+</body>
+
+</html>

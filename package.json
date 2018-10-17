@@ -4,7 +4,9 @@
   "description": "simple sku filter",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build": "webpack --config webpack.config.js",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -15,9 +17,16 @@
     "filter"
   ],
   "author": "pengzixiu",
-  "license": "MIT ",
+  "license": "MIT License",
   "bugs": {
     "url": "https://github.com/allenpzx/sku-filter/issues"
   },
-  "homepage": "https://github.com/allenpzx/sku-filter#readme"
+  "homepage": "https://github.com/allenpzx/sku-filter#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.4",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  }
 }
