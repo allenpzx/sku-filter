@@ -184,16 +184,16 @@
 
 ##### 如何使用
 
-###### 安装 `npm install --save filter-sku`
+###### 安装 `npm install --save sku-filter`
 
-###### 引入 `import filterSKU from "filter-sku"`
+###### 引入 `import SKUFilter from "sku-filter"`
 
 
 
 1. 实例化
 
     ```javascript
-    const skus = new SKU({data: skus<Array>});
+    const skus = new SKUFilter({data: skus<Array>});
     ```
 
 2. 初始化数据
@@ -205,7 +205,7 @@
 3. 过滤数据 输入已选条件(sku.types)
 
     ```javascript
-    const result = skus.filter(conditions); // [{颜色: '红'}]
+    const result = skus.filter(conditions<Array>); // [{颜色: '红'}]
     ```
 
 
