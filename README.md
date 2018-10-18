@@ -1,6 +1,10 @@
 ### sku-filter
 [![NPM](https://nodei.co/npm/sku-filter.png)](https://nodei.co/npm/sku-filter/)
 
+##### 演示
+
+[点击查看演示](https://allenpzx.github.io/sku-filter/example/)
+
 ##### 使用场景: 
 
 商品详情页一般有 `Product => SKUS<Array> => types<Array> `1对n对n的关系
